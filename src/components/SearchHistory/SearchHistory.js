@@ -7,7 +7,6 @@ import Title from '../Title/Title'
 import './searchHistory.scss'
 
 const SearchHistory = ({ searchHistory }) => {
-    console.log(searchHistory)
     return (
         <>
             {searchHistory.length !== 0 ?
@@ -18,14 +17,17 @@ const SearchHistory = ({ searchHistory }) => {
                         ariaLabel='magnifier'
                     />
                     <ul className='searchHistory'>
-                        {searchHistory.map(query => (
-                            <li
-                                key={query}
-                                className="searchHistory__query"
-                            >
-                                {query.length !== 0 && query}
-                            </li>
-                        ))}
+                        {searchHistory.map(query => {
+                            if (query === '' || query === ' ' || query.length === 0) return null
+                            else return (
+                                <li
+                                    key={query}
+                                    className="searchHistory__query"
+                                >
+                                    {query !== '' && query !== ' ' && query}
+                                </li>
+                            )
+                        })}
                     </ul>
                 </>
                 :

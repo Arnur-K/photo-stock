@@ -1,0 +1,23 @@
+.searchHistory {
+  display: flex;
+  justify-content: center;
+  margin-top: 2.5rem;
+
+  &__query {
+    padding: 1rem 2rem;
+    color: white;
+    font-size: 1.6rem;
+  }
+
+  &__query:not(:last-child) {
+    margin-right: 2rem;
+  }
+
+  &__query:nth-child(odd) {
+    background-color: rgb(37, 37, 37);
+  }
+
+  &__query:nth-child(even) {
+    background-color: #3a42b4;
+  }
+}

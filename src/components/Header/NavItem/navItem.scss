@@ -1,0 +1,13 @@
+.list-item:not(:last-child) {
+  margin-right: 4rem;
+}
+
+.link {
+  font-size: 1.6rem;
+  color: black;
+  transition: color 0.2s;
+
+  &:hover {
+    color: #3a42b4;
+  }
+}

@@ -1,0 +1,23 @@
+.loader {
+  display: flex;
+  justify-content: center;
+}
+
+@keyframes arrows {
+  0% {
+  }
+  50% {
+    color: #3a42b4;
+    transform: scale(0.8);
+  }
+  100% {
+    color: black;
+    transform: scale(1.1);
+  }
+}
+
+.loader span {
+  --delay: 0s;
+  font-size: 4rem;
+  animation: arrows 1s var(--delay) infinite ease;
+}

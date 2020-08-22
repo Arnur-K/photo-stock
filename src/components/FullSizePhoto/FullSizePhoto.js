@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
-
 import Loader from '../Loader/Loader';
-
 import CloseIcon from '../../icons/close.svg'
-
 import './fullSizePhoto.scss'
 
 import { deleteClickedPhoto, addToFavourites } from '../../store/actions/photos'

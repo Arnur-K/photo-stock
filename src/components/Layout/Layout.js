@@ -1,16 +1,11 @@
 import React from 'react'
-
 import Header from '../Header/Header'
+import './Layout.scss'
 
-import './layout.scss'
-
-export default ({ children }) => {
-    return (
-        <>
-            <Header />
-            <main className='layout'>
-                {children}
-            </main>
-        </>
-    )
-}
+export default ({ children }) =>
+  <>
+    <Header />
+    <main className='layout'>
+      {children}
+    </main>
+  </>

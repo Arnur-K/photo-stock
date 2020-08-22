@@ -1,6 +1,5 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
-
 import photosReducer from './reducers/photos'
 
 const rootReducer = combineReducers({

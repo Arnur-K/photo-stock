@@ -1,5 +1,4 @@
 import React from 'react'
-
-import './photo.scss'
+import './Photo.scss'
 
 export default ({ config }) => <img src={config.webformatURL} alt={config.tags} className='photo' />

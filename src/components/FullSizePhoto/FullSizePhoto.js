@@ -1,33 +1,45 @@
-import React, { useEffect, useState } from 'react'
-import { connect } from 'react-redux'
+import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
 import Loader from '../Loader/Loader';
-import CloseIcon from '../../icons/close.svg'
-import { deleteClickedPhoto, addToFavourites } from '../../store/actions/photos'
-import './FullSizePhoto.scss'
+import CloseIcon from '../../icons/close.svg';
+import {
+  deleteClickedPhoto,
+  addToFavourites,
+} from '../../store/actions/photos';
+import './FullSizePhoto.scss';
 
-const FullSizePhoto = ({ config, onDeleteClickedPhoto, onAddToFavourties, favourites }) => {
-  const [imgLoaded, setImgLoaded] = useState(false)
-  const [favorite, setFavourite] = useState(false)
+const FullSizePhoto = ({
+  config,
+  onDeleteClickedPhoto,
+  onAddToFavourties,
+  favourites,
+}) => {
+  const [imgLoaded, setImgLoaded] = useState(false);
+  const [favorite, setFavourite] = useState(false);
 
   useEffect(() => {
-    let isFav = false
+    let isFav = false;
     if (favourites.length !== 0) {
-      favourites.forEach(fav => {
-        if (fav.id === config[0].id) isFav = true
-      })
+      favourites.forEach((fav) => {
+        if (fav.id === config[0].id) isFav = true;
+      });
     }
-    setFavourite(isFav)
-  }, [favourites, config])
+    setFavourite(isFav);
+  }, [favourites, config]);
 
   return (
     <div className='fullSizePhoto-box'>
-      {config &&
+      {config && (
         <div className='fullSizePhoto-box__content-wrapper'>
-          {imgLoaded ?
+          {imgLoaded ? (
             <div className='fullSizePhoto-box__photo-controls'>
               <button
                 onClick={() => onAddToFavourties(config[0].id)}
-                className={favorite ? 'fullSizePhoto-box__add fullSizePhoto-box__add--fav' : 'fullSizePhoto-box__add '}
+                className={
+                  favorite
+                    ? 'fullSizePhoto-box__add fullSizePhoto-box__add--fav'
+                    : 'fullSizePhoto-box__add '
+                }
                 disabled={favorite === true}
               >
                 {favorite ? 'In Favourites' : 'Add to Favourites'}
@@ -39,25 +51,29 @@ const FullSizePhoto = ({ config, onDeleteClickedPhoto, onAddToFavourties, favour
                 <img src={CloseIcon} alt='close' />
               </button>
             </div>
-            :
+          ) : (
             <Loader />
-          }
+          )}
           <div className='fullSizePhoto-box__photo-wrapper'>
-            <img src={config[0].largeImageURL} alt={config[0].tags} onLoad={() => setImgLoaded(true)} />
+            <img
+              src={config[0].largeImageURL}
+              alt={config[0].tags}
+              onLoad={() => setImgLoaded(true)}
+            />
           </div>
         </div>
-      }
+      )}
     </div>
-  )
-}
+  );
+};
 
-const napStateToProps = state => ({
-  favourites: state.photosReducer.favourites
-})
+const napStateToProps = (state) => ({
+  favourites: state.photosReducer.favourites,
+});
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   onDeleteClickedPhoto: () => dispatch(deleteClickedPhoto()),
-  onAddToFavourties: (id) => dispatch(addToFavourites(id))
-})
+  onAddToFavourties: (id) => dispatch(addToFavourites(id)),
+});
 
-export default connect(napStateToProps, mapDispatchToProps)(FullSizePhoto)
+export default connect(napStateToProps, mapDispatchToProps)(FullSizePhoto);
